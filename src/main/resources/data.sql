@@ -13,24 +13,24 @@ INSERT INTO USER_ROLE (`USER_ID`, `ROLE_ID`) VALUES (2,1);
 INSERT INTO USER_ROLE (`USER_ID`, `ROLE_ID`) VALUES (3,1);
 
 insert into DOCUMENT (`NAME`,`NUMBER`, `CREATOR_ID`)
-VALUES ('Договор','РК/01', 1);
+VALUES ('Договор','РК/01', 2);
 insert into DOCUMENT (`NAME`,`NUMBER`, `CREATOR_ID`)
-VALUES ('Соглашение','РК/01-С1', 2);
+VALUES ('Соглашение','РК/01-С1', 3);
 insert into DOCUMENT (`NAME`,`NUMBER`, `CREATOR_ID`)
-VALUES ('Спецификация','РК/01-01', 1);
+VALUES ('Спецификация','РК/01-01', 2);
 
-insert into SIGNATURE (`USER_ID`,`DOCUMENT_ID`, `SIGNATURE`)
-VALUES (1,1, TRUE);
 insert into SIGNATURE (`USER_ID`,`DOCUMENT_ID`, `SIGNATURE`)
 VALUES (2,1, TRUE);
 insert into SIGNATURE (`USER_ID`,`DOCUMENT_ID`, `SIGNATURE`)
-VALUES (1,2, TRUE);
+VALUES (3,1, TRUE);
 insert into SIGNATURE (`USER_ID`,`DOCUMENT_ID`, `SIGNATURE`)
-VALUES (2,2, FALSE);
+VALUES (2,2, TRUE);
 insert into SIGNATURE (`USER_ID`,`DOCUMENT_ID`, `SIGNATURE`)
-VALUES (1,3, FALSE);
+VALUES (3,2, FALSE);
 insert into SIGNATURE (`USER_ID`,`DOCUMENT_ID`, `SIGNATURE`)
 VALUES (2,3, FALSE);
+insert into SIGNATURE (`USER_ID`,`DOCUMENT_ID`, `SIGNATURE`)
+VALUES (3,3, FALSE);
 
 
 

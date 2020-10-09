@@ -1,4 +1,4 @@
-package ru.zaychikov.ibsbackendtest.service;
+package ru.zaychikov.ibsbackendtest.service.user.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -37,5 +37,7 @@ public class UserServiceImpl {
         user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
         return userRepository.save(user);
     }
+
+
 
 }
