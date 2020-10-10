@@ -7,12 +7,13 @@ import ru.zaychikov.ibsbackendtest.domain.Role;
 import ru.zaychikov.ibsbackendtest.domain.User;
 import ru.zaychikov.ibsbackendtest.repository.RoleRepository;
 import ru.zaychikov.ibsbackendtest.repository.UserRepository;
+import ru.zaychikov.ibsbackendtest.service.user.UserService;
 
 import java.util.Arrays;
 import java.util.HashSet;
 
 @Component
-public class UserServiceImpl {
+public class UserServiceImpl implements UserService {
 
     private UserRepository userRepository;
     private RoleRepository roleRepository;
@@ -25,12 +26,18 @@ public class UserServiceImpl {
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
-    //@Override
+    @Override
     public User findUserByUsername(String username) {
         return userRepository.findByUsername(username);
     }
 
-    //@Override
+    @Override
+    public User findUserByName(String name) {
+        return userRepository.findUserByName(name);
+    }
+
+
+    @Override
     public User saveUser(User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         Role userRole = roleRepository.findByRole("USER");

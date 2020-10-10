@@ -5,5 +5,6 @@ import ru.zaychikov.ibsbackendtest.domain.User;
 public interface UserService {
 
     User findUserByUsername(String username);
+    User findUserByName(String name);
     User saveUser(User user);
 }

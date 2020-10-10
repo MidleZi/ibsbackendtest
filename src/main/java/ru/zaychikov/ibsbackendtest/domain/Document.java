@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 public class Document {
@@ -16,6 +17,8 @@ public class Document {
     private String number;
     @OneToOne
     private User creator;
+    @OneToOne
+    private User secondSide;
     @OneToMany(mappedBy = "document", cascade = CascadeType.ALL, fetch= FetchType.EAGER)
     private List<Signature> signatures;
 
@@ -61,5 +64,29 @@ public class Document {
 
     public void setCreator(User creator) {
         this.creator = creator;
+    }
+
+    public User getSecondSide() {
+        return secondSide;
+    }
+
+    public void setSecondSide(User secondSide) {
+        this.secondSide = secondSide;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Document document = (Document) o;
+        return name.equals(document.name) &&
+                number.equals(document.number) &&
+                creator.equals(document.creator) &&
+                secondSide.equals(document.secondSide);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, number, creator, secondSide);
     }
 }
