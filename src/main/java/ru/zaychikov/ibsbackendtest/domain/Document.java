@@ -1,9 +1,6 @@
 package ru.zaychikov.ibsbackendtest.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -23,7 +20,20 @@ public class Document {
     private List<Signature> signatures;
 
     public Document() {
-        this.signatures = new ArrayList<>();
+
+    }
+
+    public Document(int id, String name, String number) {
+        this.id = id;
+        this.name = name;
+        this.number = number;
+    }
+
+    public Document(String name, String number, User creator, User secondSide) {
+        this.name = name;
+        this.number = number;
+        this.creator = creator;
+        this.secondSide = secondSide;
     }
 
     public int getId() {

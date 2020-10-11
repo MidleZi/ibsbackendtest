@@ -1,12 +1,12 @@
 package ru.zaychikov.ibsbackendtest.service.role.impl;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import ru.zaychikov.ibsbackendtest.dao.role.RoleDAO;
 import ru.zaychikov.ibsbackendtest.domain.Role;
 import ru.zaychikov.ibsbackendtest.exceptions.RoleNotFoundException;
 import ru.zaychikov.ibsbackendtest.service.role.RoleService;
 
-@Component
+@Service
 public class RoleServiceImpl implements RoleService {
 
     private final RoleDAO roleDAO;

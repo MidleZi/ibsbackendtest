@@ -1,7 +1,7 @@
 package ru.zaychikov.ibsbackendtest.service.document.impl;
 
 import org.apache.log4j.Logger;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import ru.zaychikov.ibsbackendtest.dao.document.DocumentDAO;
 import ru.zaychikov.ibsbackendtest.domain.Document;
 import ru.zaychikov.ibsbackendtest.domain.Signature;
@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-@Component
+@Service
 public class DocumentServiceImpl implements DocumentService {
 
     public final static Logger LOG = Logger.getLogger(DocumentService.class);
@@ -150,7 +150,7 @@ public class DocumentServiceImpl implements DocumentService {
                     LOG.info("Документ '" + document.getName() + " №" + document.getNumber() + "' удален");
                 }
             } else {
-                throw new DocumentDeleteException("Удалить документ может только создатель! Ну или админ");
+                throw new DocumentDeleteException("Удалить документ может только создатель!");
             }
         } catch (NoSuchElementException ex) {
             throw new DocumentNotFoundException("Документ' " + document.getName() + " №" + document.getNumber() + "' не существует! Проверьте правильность ввода данных");

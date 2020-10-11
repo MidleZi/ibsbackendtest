@@ -34,6 +34,10 @@ public class User {
     public User() {
         this.signatures = new ArrayList<>();
     }
+    public User(String name) {
+        this.name = name;
+        this.signatures = new ArrayList<>();
+    }
 
     public int getId() {
         return id;

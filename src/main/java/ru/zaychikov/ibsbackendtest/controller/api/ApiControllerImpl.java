@@ -4,12 +4,10 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ru.zaychikov.ibsbackendtest.dao.document.DocumentDAO;
 import ru.zaychikov.ibsbackendtest.domain.Document;
 import ru.zaychikov.ibsbackendtest.domain.User;
 import ru.zaychikov.ibsbackendtest.service.document.DocumentService;
 import ru.zaychikov.ibsbackendtest.service.user.UserService;
-import ru.zaychikov.ibsbackendtest.service.user.impl.UserServiceImpl;
 
 import java.security.Principal;
 import java.util.List;

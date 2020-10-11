@@ -3,7 +3,6 @@ package ru.zaychikov.ibsbackendtest.dao.document.impl;
 import org.springframework.stereotype.Component;
 import ru.zaychikov.ibsbackendtest.dao.document.DocumentDAO;
 import ru.zaychikov.ibsbackendtest.domain.Document;
-import ru.zaychikov.ibsbackendtest.domain.Signature;
 import ru.zaychikov.ibsbackendtest.domain.User;
 import ru.zaychikov.ibsbackendtest.repository.DocumentRepository;
 import ru.zaychikov.ibsbackendtest.repository.RoleRepository;

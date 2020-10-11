@@ -2,7 +2,7 @@ package ru.zaychikov.ibsbackendtest.service.user.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import ru.zaychikov.ibsbackendtest.dao.user.UserDAO;
 import ru.zaychikov.ibsbackendtest.domain.Role;
 import ru.zaychikov.ibsbackendtest.domain.User;
@@ -13,7 +13,7 @@ import ru.zaychikov.ibsbackendtest.service.user.UserService;
 import java.util.Arrays;
 import java.util.HashSet;
 
-@Component
+@Service
 public class UserServiceImpl implements UserService {
 
     private final UserDAO userDAO;

@@ -1,7 +1,6 @@
 package ru.zaychikov.ibsbackendtest.controller.api;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
 import ru.zaychikov.ibsbackendtest.domain.Document;
 
 import java.security.Principal;
