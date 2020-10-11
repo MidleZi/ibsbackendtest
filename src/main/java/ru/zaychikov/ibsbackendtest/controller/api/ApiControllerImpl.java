@@ -1,9 +1,13 @@
 package ru.zaychikov.ibsbackendtest.controller.api;
 
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.zaychikov.ibsbackendtest.dao.document.DocumentDAO;
 import ru.zaychikov.ibsbackendtest.domain.Document;
 import ru.zaychikov.ibsbackendtest.domain.User;
+import ru.zaychikov.ibsbackendtest.service.document.DocumentService;
 import ru.zaychikov.ibsbackendtest.service.user.UserService;
 import ru.zaychikov.ibsbackendtest.service.user.impl.UserServiceImpl;
 
@@ -14,39 +18,42 @@ import java.util.List;
 @RequestMapping("api/documents")
 public class ApiControllerImpl implements ApiController {
 
-    private final DocumentDAO documentDAO;
+    private final DocumentService documentService;
     private final UserService userService;
 
-    public ApiControllerImpl(DocumentDAO documentDAO, UserService userService) {
-        this.documentDAO = documentDAO;
+    public ApiControllerImpl(DocumentService documentService, UserService userService) {
+        this.documentService = documentService;
         this.userService = userService;
     }
 
     @GetMapping
-    public List<Document> getAllDocuments(Principal principal) {
+    public ResponseEntity<List<Document>> getAllDocuments(Principal principal) {
         User user = userService.findUserByUsername(principal.getName());
-        return documentDAO.getAllDocuments(user);
+        return new ResponseEntity<>(documentService.getAllDocuments(user), HttpStatus.OK);
     }
 
     @PostMapping
-    public String createDocument(@RequestBody Document document, Principal principal) {
-        documentDAO.createDocument(userService.findUserByUsername(principal.getName()), document);
-        return "Success";
+    public ResponseEntity<String> createDocument(@RequestBody Document document, Principal principal) {
+        documentService.createDocument(userService.findUserByUsername(principal.getName()), document);
+        HttpHeaders responseHeaders = new HttpHeaders();
+        responseHeaders.add("Content-Type", "application/json");
+        return new ResponseEntity<>("{ \"result\":\"success\" }", responseHeaders, HttpStatus.OK);
     }
 
     @PostMapping("/signdoc")
-    public String signDocument(@RequestBody Document document, Principal principal) {
-        String result;
-        User user = userService.findUserByUsername(principal.getName());
-        documentDAO.signDocument(user, document);
-        return null;
+    public ResponseEntity<String> signDocument(@RequestBody Document document, Principal principal) {
+        documentService.signDocument(userService.findUserByUsername(principal.getName()), document);
+        HttpHeaders responseHeaders = new HttpHeaders();
+        responseHeaders.add("Content-Type", "application/json");
+        return new ResponseEntity<>("{ \"result\":\"success\" }", responseHeaders, HttpStatus.OK);
     }
 
     @DeleteMapping("/delete")
-    public String deleteDocument(@RequestBody Document document, Principal principal) {
-        User user = userService.findUserByUsername(principal.getName());
-        documentDAO.deleteDocument(user, document);
-        return "success";
+    public ResponseEntity<String> deleteDocument(@RequestBody Document document, Principal principal) {
+        documentService.deleteDocument(userService.findUserByUsername(principal.getName()), document);
+        HttpHeaders responseHeaders = new HttpHeaders();
+        responseHeaders.add("Content-Type", "application/json");
+        return new ResponseEntity<>("{ \"result\":\"success\" }", responseHeaders, HttpStatus.OK);
     }
 
 
