@@ -4,14 +4,15 @@
 #### Автор: А. Зайчиков
 #### E-mail: emilien91@gmail.com
 
+#### WEB-интерфейс в разработке
 #### API к системе
 
-***1) /api/documents GET запрос
+***1) /api/documents GET запрос***
 
 В ответе придут документы созданные пользователем, а так же отправленные ему на подпись.
 
 ***2)/api/documents POST запрос 
-Body:
+Body:***
 
     {
         "name": "Договор",
@@ -35,7 +36,7 @@ Body:
     }
 
 ***3) /api/documents/signdoc POST запрос 
-Body:
+Body:***
 
     {
         "id": 3,
@@ -52,6 +53,7 @@ Body:
     }
 
 ***4) /api/documents/delete DELETE запрос
+Body***
 
     {
         "id": 1,
