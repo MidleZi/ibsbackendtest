@@ -17,6 +17,22 @@ public class Signature {
     private Document document;
     private boolean signature;
 
+    public Signature() {
+    }
+
+    public Signature(User user, Document document) {
+        this.user = user;
+        this.document = document;
+        this.signature = false;
+    }
+
+    public Signature(int id, User user, Document document, boolean signature) {
+        this.id = id;
+        this.user = user;
+        this.document = document;
+        this.signature = signature;
+    }
+
     public int getId() {
         return id;
     }

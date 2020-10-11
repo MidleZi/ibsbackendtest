@@ -3,7 +3,10 @@ package ru.zaychikov.ibsbackendtest.dao.document.impl;
 import org.springframework.stereotype.Component;
 import ru.zaychikov.ibsbackendtest.dao.document.DocumentDAO;
 import ru.zaychikov.ibsbackendtest.domain.Document;
+import ru.zaychikov.ibsbackendtest.domain.User;
 import ru.zaychikov.ibsbackendtest.repository.DocumentRepository;
+import ru.zaychikov.ibsbackendtest.repository.RoleRepository;
+import ru.zaychikov.ibsbackendtest.service.user.UserService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,46 +14,38 @@ import java.util.List;
 @Component
 public class DocumentDAOImpl implements DocumentDAO {
 
-    private DocumentRepository documentRepository;
+    private final DocumentRepository documentRepository;
+    private final RoleRepository roleRepository;
+    private final UserService userService;
 
     //тут спринг сам инжектит зависимость через конструктор
-    public DocumentDAOImpl(DocumentRepository documentRepository) {
+    public DocumentDAOImpl(DocumentRepository documentRepository, RoleRepository roleRepository, UserService userService) {
         this.documentRepository = documentRepository;
+        this.roleRepository = roleRepository;
+        this.userService = userService;
     }
 
     @Override
-    public List<Document> getAllDocuments() {
+    public Document getDocumentById(int id) {
+        return documentRepository.findById(id).get();
+    }
+
+    @Override
+    public List<Document> getAllDocuments(User user) {
         List<Document> documents = new ArrayList<>();
         documentRepository.findAll().forEach(documents::add);
         return documents;
     }
 
-    @Override
-    public Document getDocumentById(int id) {
-        return null;
-    }
 
     @Override
-    public boolean createDocument(Document document) {
+    public void saveDocument(Document document) {
         documentRepository.save(document);
-        return true;
     }
 
 
     @Override
-    public boolean updateDocument(Document document) {
-        return false;
-    }
-
-    @Override
-    public boolean deleteDocument(Document document) {
-        if(document.getSignatures().get(0).isSignature() || document.getSignatures().get(1).isSignature()) {
-            System.out.println("Документ подписан одной из сторон, удаление невозможно!");
-            return true;
-        } else {
-            documentRepository.delete(document);
-            System.out.println("Документ удален");
-            return false;
-        }
+    public void deleteDocument(Document document) {
+        documentRepository.delete(document);
     }
 }

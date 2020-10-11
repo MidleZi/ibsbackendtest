@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import ru.zaychikov.ibsbackendtest.domain.User;
-import ru.zaychikov.ibsbackendtest.service.UserServiceImpl;
+import ru.zaychikov.ibsbackendtest.service.user.impl.UserServiceImpl;
 
 @Controller
 @RequestMapping("/")

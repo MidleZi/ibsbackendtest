@@ -1,17 +1,18 @@
 package ru.zaychikov.ibsbackendtest.controller.api;
 
-import org.springframework.ui.Model;
+import org.springframework.http.ResponseEntity;
 import ru.zaychikov.ibsbackendtest.domain.Document;
 
+import java.security.Principal;
 import java.util.List;
 
 public interface ApiController {
 
-    List<Document> getAllDocuments();
+    ResponseEntity<List<Document>> getAllDocuments(Principal principal);
 
-    String createDocument(Document document);
+    ResponseEntity<String> createDocument(Document document, Principal principal);
 
-    String signDocument(int userId, Document document);
+    ResponseEntity<String> signDocument(Document document, Principal principal);
 
-    String deleteDocument(Document document);
+    ResponseEntity<String> deleteDocument(Document document, Principal principal);
 }
