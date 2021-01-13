@@ -8,6 +8,7 @@ import ru.zaychikov.ibsbackendtest.domain.Document;
 import ru.zaychikov.ibsbackendtest.domain.User;
 import ru.zaychikov.ibsbackendtest.service.document.DocumentService;
 import ru.zaychikov.ibsbackendtest.service.user.UserService;
+import ru.zaychikov.ibsbackendtest.util.Constant;
 
 import java.security.Principal;
 import java.util.List;
@@ -34,24 +35,24 @@ public class ApiControllerImpl implements ApiController {
     public ResponseEntity<String> createDocument(@RequestBody Document document, Principal principal) {
         documentService.createDocument(userService.findUserByUsername(principal.getName()), document);
         HttpHeaders responseHeaders = new HttpHeaders();
-        responseHeaders.add("Content-Type", "application/json");
-        return new ResponseEntity<>("{ \"result\":\"success\" }", responseHeaders, HttpStatus.OK);
+        responseHeaders.add(Constant.CONTENT_TYPE_HEADER, Constant.APPLICATION_JSON);
+        return new ResponseEntity<>(Constant.SUCCESS, responseHeaders, HttpStatus.OK);
     }
 
     @PostMapping("/signdoc")
     public ResponseEntity<String> signDocument(@RequestBody Document document, Principal principal) {
         documentService.signDocument(userService.findUserByUsername(principal.getName()), document);
         HttpHeaders responseHeaders = new HttpHeaders();
-        responseHeaders.add("Content-Type", "application/json");
-        return new ResponseEntity<>("{ \"result\":\"success\" }", responseHeaders, HttpStatus.OK);
+        responseHeaders.add(Constant.CONTENT_TYPE_HEADER, Constant.APPLICATION_JSON);
+        return new ResponseEntity<>(Constant.SUCCESS, responseHeaders, HttpStatus.OK);
     }
 
     @DeleteMapping("/delete")
     public ResponseEntity<String> deleteDocument(@RequestBody Document document, Principal principal) {
         documentService.deleteDocument(userService.findUserByUsername(principal.getName()), document);
         HttpHeaders responseHeaders = new HttpHeaders();
-        responseHeaders.add("Content-Type", "application/json");
-        return new ResponseEntity<>("{ \"result\":\"success\" }", responseHeaders, HttpStatus.OK);
+        responseHeaders.add(Constant.CONTENT_TYPE_HEADER, Constant.APPLICATION_JSON);
+        return new ResponseEntity<>(Constant.SUCCESS, responseHeaders, HttpStatus.OK);
     }
 
 

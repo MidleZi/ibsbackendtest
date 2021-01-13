@@ -35,11 +35,12 @@ public class ApiControllerTest {
 
         //Не знаю почему не приходит 401, но то что возвращается страница логина,
         //говорит о том, что запрос без авторизации перенаправился на форму входа
+        //вообще надо довести до ума этот тест
         String waitingResponse = "<!DOCTYPE html>\n" +
                 "<html xmlns=\"http://www.w3.org/1999/xhtml\">\n" +
                 "\n" +
                 "<head>\n" +
-                "    <title>Spring Security Tutorial</title>\n" +
+                "    <title>Документоборот</title>\n" +
                 "    <link rel=\"stylesheet\" type=\"text/css\" href=\"/css/login.css\"/>\n" +
                 "    <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\">\n" +
                 "    <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js\"></script>\n" +
@@ -47,12 +48,9 @@ public class ApiControllerTest {
                 "</head>\n" +
                 "\n" +
                 "<body>\n" +
-                "<form action=\"/registration\" method=\"get\">\n" +
-                "    <button class=\"btn btn-md btn-warning btn-block\" type=\"Submit\">Go To Registration Page</button>\n" +
-                "</form>\n" +
+                "\n" +
                 "\n" +
                 "<div class=\"container\">\n" +
-                "    <img src=\"/images/login.jpg\" class=\"img-responsive center-block\" width=\"300\" height=\"300\" alt=\"Logo\"/>\n" +
                 "    <form action=\"/login\" method=\"POST\" class=\"form-signin\">\n" +
                 "        <h3 class=\"form-signin-heading\">Welcome</h3>\n" +
                 "        <br/>\n" +
@@ -62,6 +60,9 @@ public class ApiControllerTest {
                 "               id=\"password\" name=\"password\" class=\"form-control\"/> <br/>\n" +
                 "        \n" +
                 "        <button class=\"btn btn-lg btn-primary btn-block\" name=\"Submit\" value=\"Login\" type=\"Submit\">Login</button>\n" +
+                "    </form><br/>\n" +
+                "    <form action=\"/registration\" method=\"get\">\n" +
+                "        <button class=\"btn btn-md btn-warning btn-block\" type=\"Submit\">Go To Registration Page</button>\n" +
                 "    </form>\n" +
                 "</div>\n" +
                 "</body>\n" +

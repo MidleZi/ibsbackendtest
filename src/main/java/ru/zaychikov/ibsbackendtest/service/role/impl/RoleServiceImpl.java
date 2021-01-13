@@ -18,6 +18,10 @@ public class RoleServiceImpl implements RoleService {
     @Override
     public Role findByRole(String roleName) {
         Role role = roleDAO.findByRole(roleName);
+        return checkRole(role);
+    }
+
+    private Role checkRole(Role role) {
         if(role != null) {
             return role;
         } else {

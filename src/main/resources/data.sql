@@ -4,6 +4,7 @@ insert into USERS (`NAME`, `USERNAME`, `PASSWORD`, `ACTIVE`)
 VALUES ('Рога и Копыта', 'roga', '$2a$10$B042kZ1aAdyef3r5ITWHN.yRT3l6YwuuO2PpupxuP/2ylbZmIUUnK', 1);
 insert into USERS (`NAME`, `USERNAME`, `PASSWORD`, `ACTIVE`)
 VALUES ('Кошкин дом', 'cat', '$2a$10$B042kZ1aAdyef3r5ITWHN.yRT3l6YwuuO2PpupxuP/2ylbZmIUUnK', 1);
+--password 123123
 
 INSERT INTO ROLE (`ROLE`) VALUES ('ADMIN');
 INSERT INTO ROLE (`ROLE`) VALUES ('USER');

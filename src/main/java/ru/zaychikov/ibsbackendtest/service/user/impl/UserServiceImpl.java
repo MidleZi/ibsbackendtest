@@ -30,21 +30,13 @@ public class UserServiceImpl implements UserService {
     @Override
     public User findUserByUsername(String username) {
         User user = userDAO.findUserByUsername(username);
-        if(user != null) {
-            return user;
-        } else {
-            throw new UserNotFoundException("Пользователь не найден!");
-        }
+        return checkUser(user);
     }
 
     @Override
     public User findUserByName(String name) {
         User user = userDAO.findUserByName(name);
-        if(user != null) {
-            return user;
-        } else {
-            throw new UserNotFoundException("Пользователь не найден!");
-        }
+        return checkUser(user);
     }
 
 
@@ -56,6 +48,11 @@ public class UserServiceImpl implements UserService {
         userDAO.saveUser(user);
     }
 
-
-
+    private User checkUser(User user) {
+        if(user != null) {
+            return user;
+        } else {
+            throw new UserNotFoundException("Пользователь не найден!");
+        }
+    }
 }
